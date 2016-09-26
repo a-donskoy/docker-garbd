@@ -1,0 +1,23 @@
+# Language setting
+language: none
+build:
+  pre_ci:
+    - docker build -t myImage:tip .
+    - ./doSomething.sh
+
+build:
+  pre_ci:
+    - docker build -t myImage:tip .
+    - echo "this is master branch"
+
+  ci:
+    - uptime
+
+  post_ci:
+    - ls -a
+    - pwd
+
+  cache: true
+
+  cache_dir_list: 
+    - $SHIPPABLE_BUILD_DIR/node_modules
