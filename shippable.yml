@@ -1,9 +1,5 @@
 # Language setting
 language: none
-build:
-  pre_ci:
-    - docker build -t myImage:tip .
-    - ./doSomething.sh
 
 build:
   pre_ci:
