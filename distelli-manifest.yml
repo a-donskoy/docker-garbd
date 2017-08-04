@@ -12,7 +12,8 @@ rtimoshenko/docker-garbd:
     - CMD="ls -al"
     - echo $CMD && eval $CMD
     - CMD="if cd docker-garbd 2&>/dev/null; then git pull; else cd ~ && git clone git@github.com:a-donskoy/docker-garbd.git && cd docker-garbd ; fi"
-    - 
+    - echo $CMD && eval $CMD
+
 
   PostStart:
     - CMD="source /etc/environment"

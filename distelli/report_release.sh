@@ -4,16 +4,22 @@
 application="${DISTELLI_APPNAME}"
 environment="${DISTELLI_ENV}"
 current_sha="${DISTELLI_RELREVISION:0:7}"
-api_token=${API_TOKEN}
+if [[ $API_TOKEN ]]; then
+    api_token=${API_TOKEN}
+else
+    api_token=${DISTELLI_SECRET}
+fi
+api_token=${API_TOKEN:-}
 github_link="https://github.com/ConsumerAffairs/${application}"
 jira_link="https://consumeraffairs.atlassian.net/browse/"
 webhook_link="$SLACK_URL"
 run_mode="${1:-deploy-notes}"
 slack_channel='#general'
 
-if ! [[ "${environment}" == *production ]] || [[ $(hostname) != celery* ]]; then
+if ! [[ "${DISTELLI_RELBRANCH}" == master ]]; then
     exit 0
 fi
+
 output="$(date): New deployment of ${application} into ${environment} environment just finished!\n\n"
 output+="SHA: ${DISTELLI_RELREVISION:0:7}\n\n"
 
