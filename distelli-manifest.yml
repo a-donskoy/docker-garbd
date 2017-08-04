@@ -4,13 +4,18 @@ rtimoshenko/docker-garbdi:
   Build:
     - CMD="ls -al"
     - echo $CMD && eval $CMD
+  ReleaseNotesCmd:
+    - distelli/report_release.sh  release-notes
 
   Start:
+    - CMD="ls -al"
+    - echo $CMD && eval $CMD
+
+  PostStart:
     - CMD="source /etc/environment"
     - echo $CMD && eval $CMD
     - export DB_HOST
     - export INFRA_ENV
     - export SERVER_TAGS
     - export INFRA_CONTAINER_DIR
-    - CMD="ls -al"
-    - echo $CMD && eval $CMD
+    - distelli/report_release.sh  
