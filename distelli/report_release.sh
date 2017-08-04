@@ -1,8 +1,10 @@
 #!/bin/bash -ex
 
 
-application="docker-garbd"
+application="${DISTELLI_APPNAME}"
 environment="${DISTELLI_ENV}"
+application="docker-garbd"
+environment="garbd-production"
 current_sha="${DISTELLI_RELREVISION:0:7}"
 if [[ $API_TOKEN ]]; then
     api_token=${API_TOKEN}
