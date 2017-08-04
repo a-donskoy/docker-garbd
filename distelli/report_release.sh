@@ -1,7 +1,7 @@
 #!/bin/bash -ex
 
 
-application="${DISTELLI_APPNAME}"
+application="docker-garbd"
 environment="${DISTELLI_ENV}"
 current_sha="${DISTELLI_RELREVISION:0:7}"
 if [[ $API_TOKEN ]]; then
