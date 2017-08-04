@@ -19,8 +19,9 @@ slack_channel='#general'
 if ! [[ "${DISTELLI_RELBRANCH}" == master ]] || ! [[ $api_token ]]; then
     exit 0
 fi
-
-output="$(date): New deployment of ${application} into ${environment} environment just finished!\n\n"
+if [[ "${run_mode}" == deploy-notes ]]; then
+    output="$(date): New deployment of ${application} into ${environment} environment just finished!\n\n"
+fi
 output+="SHA: ${DISTELLI_RELREVISION:0:7}\n\n"
 
 if [[ "${run_mode}" == release-notes ]]; then
