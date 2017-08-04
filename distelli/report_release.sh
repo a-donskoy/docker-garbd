@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -ex
 
 
 application="${DISTELLI_APPNAME}"
