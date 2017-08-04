@@ -9,14 +9,13 @@ if [[ $API_TOKEN ]]; then
 else
     api_token=${DISTELLI_SECRET}
 fi
-api_token=${API_TOKEN:-}
 github_link="https://github.com/ConsumerAffairs/${application}"
 jira_link="https://consumeraffairs.atlassian.net/browse/"
 webhook_link="$SLACK_URL"
 run_mode="${1:-deploy-notes}"
 slack_channel='#general'
 
-if ! [[ "${DISTELLI_RELBRANCH}" == master ]]; then
+if ! [[ "${DISTELLI_RELBRANCH}" == master ]] || ! [[ $api_token ]]; then
     exit 0
 fi
 

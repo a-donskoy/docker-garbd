@@ -6,6 +6,15 @@ rtimoshenko/docker-garbd:
     - echo $CMD && eval $CMD
     - env
   ReleaseNotesCmd:
+    - CMD="source /etc/environment"
+    - echo $CMD && eval $CMD
+    - env
+    - echo "----"
+    - export DB_HOST
+    - export INFRA_ENV
+    - export SERVER_TAGS
+    - export INFRA_CONTAINER_DIR
+    - export API_TOKEN
     - distelli/report_release.sh  release-notes
 
   Start:
