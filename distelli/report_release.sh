@@ -1,4 +1,4 @@
-#!/bin/bash -ex
+#!/bin/bash -e
 
 
 application="${DISTELLI_APPNAME}"
@@ -6,10 +6,10 @@ environment="${DISTELLI_ENV}"
 application="docker-garbd"
 environment="garbd-production"
 current_sha="${DISTELLI_RELREVISION:0:7}"
-if [[ $API_TOKEN ]]; then
-    api_token=${API_TOKEN}
-else
-    api_token=${DISTELLI_SECRET}
+api_token=${API_TOKEN}
+
+if ! [[ $api_token ]]; then
+    exit 0
 fi
 github_link="https://github.com/ConsumerAffairs/${application}"
 jira_link="https://consumeraffairs.atlassian.net/browse/"
