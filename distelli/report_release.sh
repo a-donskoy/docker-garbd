@@ -1,4 +1,4 @@
-#!/bin/bash -ex
+#!/bin/bash -e
 
 application="${DISTELLI_APPNAME}"
 environment="${DISTELLI_ENV}"
@@ -62,7 +62,7 @@ do
 done
 output+="\n"
 prs=$(git log --pretty=oneline $sha_range \
-    | sed -ne 's|.* request \#\([0-9]\{3,3\}\) from.*|\1|p' \
+    | sed -ne 's|.* request \#\([0-9]\{1,5\}\) from.*|\1|p' \
     | sed -e "s~^~${github_link}/pull/~" \
     | sort \
     | uniq)
