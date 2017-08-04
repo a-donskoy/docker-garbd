@@ -1,6 +1,5 @@
 #!/bin/bash -ex
 
-
 application="${DISTELLI_APPNAME}"
 environment="${DISTELLI_ENV}"
 application="docker-garbd"
