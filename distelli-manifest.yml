@@ -30,5 +30,5 @@ rtimoshenko/docker-garbd:
     - export API_TOKEN
     - env
     - echo "----"
-    - cd docker-garbd
+    - cd ~/docker-garbd
     - distelli/report_release.sh  
