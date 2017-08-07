@@ -28,6 +28,7 @@ rtimoshenko/docker-garbd:
     - export SERVER_TAGS
     - export INFRA_CONTAINER_DIR
     - export API_TOKEN
+    - export SLACK_URL
     - env
     - echo "----"
     - cd ~/docker-garbd
