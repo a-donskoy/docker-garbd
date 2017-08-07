@@ -12,7 +12,7 @@ github_link="https://github.com/ConsumerAffairs/${application}"
 jira_link="https://consumeraffairs.atlassian.net/browse/"
 webhook_link="$SLACK_URL"
 run_mode="${1:-deploy-notes}"
-slack_channel='#general'
+slack_channel='#test-notifications'
 
 if ! [[ "${DISTELLI_RELBRANCH}" == master ]] || ! [[ $api_token ]]; then
     exit 0
