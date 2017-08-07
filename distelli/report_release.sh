@@ -31,6 +31,7 @@ else
     url="https://api.distelli.com/rtimoshenko/envs/${environment}/deployments?apiToken=${api_token}&max_results=2&order=desc"
     jq_pattern='.deployments[1].release_version, .deployments[0].release_version'
 fi
+echo "command curl -s  ${url} | jq -r \"${jq_pattern}\""
 
 releases=$(curl -s  ${url} | jq -r "${jq_pattern}")
 
