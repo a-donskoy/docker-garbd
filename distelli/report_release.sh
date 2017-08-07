@@ -1,7 +1,5 @@
-#!/bin/bash -ex
+#!/bin/bash -e
 
-application="${DISTELLI_APPNAME}"
-environment="${DISTELLI_ENV}"
 application="docker-garbd"
 environment="garbd-production"
 current_sha="${DISTELLI_RELREVISION:0:7}"
@@ -22,7 +20,7 @@ fi
 if [[ "${run_mode}" == deploy-notes ]]; then
     output="$(date): New deployment of ${application} into ${environment} environment just finished!\n\n"
 fi
-output+="SHA: ${DISTELLI_RELREVISION:0:7}\n\n"
+output+="SHA: ${current_sha}\n\n"
 
 if [[ "${run_mode}" == release-notes ]]; then
     url="https://api.distelli.com/rtimoshenko/envs/${environment}/deployments?apiToken=${api_token}&max_results=1&order=desc"
@@ -31,7 +29,6 @@ else
     url="https://api.distelli.com/rtimoshenko/envs/${environment}/deployments?apiToken=${api_token}&max_results=2&order=desc"
     jq_pattern='.deployments[1].release_version, .deployments[0].release_version'
 fi
-echo "command curl -s  ${url} | jq -r \"${jq_pattern}\""
 
 releases=$(curl -s  ${url} | jq -r "${jq_pattern}")
 
